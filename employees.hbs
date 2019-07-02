@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-12 table-responsive">
+        <h2>Employees</h2>
+        <hr />
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Employee&nbsp;Num</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Manager&nbsp;ID</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Hired On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- iterates over each employee -->
+                {{#each employees}}
+                <tr>
+                    <!-- renders employee number -->
+                    <td>{{employeeNum}}</td>
+
+                    <!-- renders employee's first name and last name-->
+                    <td>
+                        <a href="employee/{{employeeNum}}">{{firstName}} {{lastName}}</a>
+                    </td>
+
+                    <!-- renders email -->
+                    <td>
+                        <a href="mailto:{{email}}">{{email}}</a>
+                    </td>
+
+                    <!-- renders address, city, state and postal code -->
+                    <td>{{addressStreet}} {{addressCity}} {{addressState}} {{addressPostal}}</td>
+
+                    <!-- renders manager number -->
+                    <td>
+                        <a href="/employees?manager={{employeeManagerNum}}">{{employeeManagerNum}}</a>
+                    </td>
+
+                    <!-- renders status -->
+                    <td>
+                        <a href="/employees?status={{status}}">{{status}}</a>
+                    </td>
+
+                    <!-- renders department -->
+                    <td>
+                        <a href="/employees?department={{department}}">{{department}}</a>
+                    </td>
+
+                    <!-- renders hire date -->
+                    <td>{{hireDate}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- renders message if no employees -->
+    {{#unless employees}}
+    <div class="col-md-12 text-center">
+        <strong>{{message}}</strong>
+    </div>
+    {{/unless}}
+</div>
